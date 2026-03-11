@@ -1,0 +1,28 @@
+# Dependencies
+node_modules/
+
+# VuePress build output
+docs/.vuepress/dist/
+docs/.vuepress/.cache/
+docs/.vuepress/.temp/
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Editor
+.idea/
+*.swp
+*.swo
+*~
+
+# Logs
+*.log
+npm-debug.log*
+
+# Lock file (optional — remove this line if you want to pin deps)
+package-lock.json
+
+# Environment
+.env
+.env.local

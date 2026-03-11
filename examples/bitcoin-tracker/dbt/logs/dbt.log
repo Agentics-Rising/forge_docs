@@ -1,0 +1,796 @@
+[0m13:51:07.025363 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'invocation', 'label': 'start', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7e8f9e556db0>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7e8f9dd83710>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7e8fa05248f0>]}
+
+
+============================== 13:51:07.031108 | 66b9dec3-8fb6-4a09-be87-c0b414d54b95 ==============================
+[0m13:51:07.031108 [info ] [MainThread]: Running with dbt=1.11.2
+[0m13:51:07.031893 [debug] [MainThread]: running dbt with arguments {'warn_error_options': 'WarnErrorOptionsV2(error=[], warn=[], silence=[])', 'printer_width': '80', 'target_path': 'None', 'no_print': 'None', 'fail_fast': 'False', 'invocation_command': 'dbt run --project-dir . --profiles-dir .', 'introspect': 'True', 'partial_parse': 'True', 'debug': 'False', 'warn_error': 'None', 'send_anonymous_usage_stats': 'True', 'profiles_dir': '.', 'log_path': 'logs', 'log_cache_events': 'False', 'indirect_selection': 'eager', 'cache_selected_only': 'False', 'write_json': 'True', 'log_format': 'default', 'static_parser': 'True', 'empty': 'False', 'quiet': 'False', 'use_experimental_parser': 'False', 'version_check': 'True', 'use_colors': 'True'}
+[0m13:51:17.948046 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'project_id', 'label': '66b9dec3-8fb6-4a09-be87-c0b414d54b95', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7e8f851cf5c0>]}
+[0m13:51:18.037679 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'adapter_info', 'label': '66b9dec3-8fb6-4a09-be87-c0b414d54b95', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7e8f7b7c60f0>]}
+[0m13:51:18.038448 [info ] [MainThread]: Registered adapter: bigquery=1.11.0
+[0m13:51:18.387433 [debug] [MainThread]: checksum: 3d40d8bbe1bef07db1c24822f2dbfff8bc07f2a48ed4fe2658a40653aec0b54b, vars: {}, profile: , target: , version: 1.11.2
+[0m13:51:18.388292 [info ] [MainThread]: Unable to do partial parsing because saved manifest not found. Starting full parse.
+[0m13:51:18.388882 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'partial_parser', 'label': '66b9dec3-8fb6-4a09-be87-c0b414d54b95', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7e8f851bbce0>]}
+[0m13:51:20.340373 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'load_project', 'label': '66b9dec3-8fb6-4a09-be87-c0b414d54b95', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7e8f7ab4d310>]}
+[0m13:51:20.456512 [debug] [MainThread]: Wrote artifact WritableManifest to ./target/manifest.json
+[0m13:51:20.458878 [debug] [MainThread]: Wrote artifact SemanticManifest to ./target/semantic_manifest.json
+[0m13:51:20.475842 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'resource_counts', 'label': '66b9dec3-8fb6-4a09-be87-c0b414d54b95', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7e8f7aa5dd90>]}
+[0m13:51:20.476501 [info ] [MainThread]: Found 2 models, 7 data tests, 1 source, 538 macros
+[0m13:51:20.477083 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'runnable_timing', 'label': '66b9dec3-8fb6-4a09-be87-c0b414d54b95', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7e8f7b2d0740>]}
+[0m13:51:20.479584 [info ] [MainThread]: 
+[0m13:51:20.480228 [info ] [MainThread]: Concurrency: 4 threads (target='dev')
+[0m13:51:20.480797 [info ] [MainThread]: 
+[0m13:51:20.481687 [debug] [MainThread]: Acquiring new bigquery connection 'master'
+[0m13:51:20.487612 [debug] [ThreadPool]: Acquiring new bigquery connection 'list_dust-labs-485011'
+[0m13:51:20.488302 [debug] [ThreadPool]: Opening a new connection, currently in state init
+[0m13:51:23.279349 [debug] [ThreadPool]: Re-using an available connection from the pool (formerly list_dust-labs-485011, now create_dust-labs-485011_crypto_data_crypto_data)
+[0m13:51:23.282087 [debug] [ThreadPool]: Creating schema "database: "dust-labs-485011"
+schema: "crypto_data_crypto_data"
+"
+[0m13:51:23.305634 [debug] [ThreadPool]: On create_dust-labs-485011_crypto_data_crypto_data: /* {"app": "dbt", "dbt_version": "1.11.2", "profile_name": "bitcoin_tracker", "target_name": "dev", "connection_name": "create_dust-labs-485011_crypto_data_crypto_data"} */
+create schema if not exists `dust-labs-485011`.`crypto_data_crypto_data`
+  
+[0m13:51:23.306359 [debug] [ThreadPool]: Opening a new connection, currently in state closed
+[0m13:51:23.662911 [debug] [ThreadPool]: BigQuery adapter: https://console.cloud.google.com/bigquery?project=dust-labs-485011&j=bq:us-central1:c4091481-55f7-4e37-a37d-d193eaaaa7f2&page=queryresults
+[0m13:51:24.529416 [debug] [ThreadPool]: SQL status: OK in 0.864 seconds
+[0m13:51:24.590632 [debug] [ThreadPool]: Re-using an available connection from the pool (formerly create_dust-labs-485011_crypto_data_crypto_data, now list_dust-labs-485011_crypto_data_crypto_data)
+[0m13:51:24.591435 [debug] [ThreadPool]: Opening a new connection, currently in state closed
+[0m13:51:24.999882 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'runnable_timing', 'label': '66b9dec3-8fb6-4a09-be87-c0b414d54b95', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7e8f7b2d1640>]}
+[0m13:51:25.000860 [debug] [MainThread]: Opening a new connection, currently in state init
+[0m13:51:25.007092 [debug] [Thread-1 (]: Began running node model.bitcoin_tracker.daily_price_summary
+[0m13:51:25.008375 [debug] [Thread-2 (]: Began running node model.bitcoin_tracker.price_trends
+[0m13:51:25.010005 [info ] [Thread-1 (]: 1 of 2 START sql view model crypto_data_crypto_data.daily_price_summary ........ [RUN]
+[0m13:51:25.011640 [info ] [Thread-2 (]: 2 of 2 START sql view model crypto_data_crypto_data.price_trends ............... [RUN]
+[0m13:51:25.013199 [debug] [Thread-1 (]: Re-using an available connection from the pool (formerly list_dust-labs-485011_crypto_data_crypto_data, now model.bitcoin_tracker.daily_price_summary)
+[0m13:51:25.015055 [debug] [Thread-2 (]: Acquiring new bigquery connection 'model.bitcoin_tracker.price_trends'
+[0m13:51:25.016623 [debug] [Thread-1 (]: Began compiling node model.bitcoin_tracker.daily_price_summary
+[0m13:51:25.018376 [debug] [Thread-2 (]: Began compiling node model.bitcoin_tracker.price_trends
+[0m13:51:25.055335 [debug] [Thread-1 (]: Writing injected SQL for node "model.bitcoin_tracker.daily_price_summary"
+[0m13:51:25.057518 [debug] [Thread-2 (]: Writing injected SQL for node "model.bitcoin_tracker.price_trends"
+[0m13:51:25.059087 [debug] [Thread-1 (]: Began executing node model.bitcoin_tracker.daily_price_summary
+[0m13:51:25.059883 [debug] [Thread-2 (]: Began executing node model.bitcoin_tracker.price_trends
+[0m13:51:25.121683 [debug] [Thread-1 (]: Writing runtime sql for node "model.bitcoin_tracker.daily_price_summary"
+[0m13:51:25.123813 [debug] [Thread-2 (]: Writing runtime sql for node "model.bitcoin_tracker.price_trends"
+[0m13:51:25.125086 [debug] [Thread-1 (]: On model.bitcoin_tracker.daily_price_summary: /* {"app": "dbt", "dbt_version": "1.11.2", "profile_name": "bitcoin_tracker", "target_name": "dev", "node_id": "model.bitcoin_tracker.daily_price_summary"} */
+
+
+  create or replace view `dust-labs-485011`.`crypto_data_crypto_data`.`daily_price_summary`
+  OPTIONS()
+  as 
+
+-- Daily Bitcoin price summary
+-- Calculates daily OHLC (Open, High, Low, Close) and volatility metrics
+SELECT 
+  DATE(price_timestamp) as date,
+  
+  -- Price statistics
+  MIN(price_usd) as min_price_usd,
+  MAX(price_usd) as max_price_usd,
+  AVG(price_usd) as avg_price_usd,
+  FIRST_VALUE(price_usd) OVER (PARTITION BY DATE(price_timestamp) ORDER BY price_timestamp ASC) as open_price_usd,
+  FIRST_VALUE(price_usd) OVER (PARTITION BY DATE(price_timestamp) ORDER BY price_timestamp DESC) as close_price_usd,
+  
+  -- Volatility
+  STDDEV(price_usd) as daily_volatility,
+  MAX(price_usd) - MIN(price_usd) as price_range,
+  
+  -- Volume and market cap
+  AVG(market_cap_usd) as avg_market_cap_usd,
+  SUM(volume_24h_usd) / COUNT(*) as avg_volume_24h_usd,  -- Average to avoid double counting
+  
+  -- Additional metrics
+  AVG(price_eur) as avg_price_eur,
+  AVG(price_gbp) as avg_price_gbp,
+  COUNT(*) as data_points,
+  MIN(price_timestamp) as first_update,
+  MAX(price_timestamp) as last_update
+
+FROM `<<YOUR_PROJECT_HERE>>`.`crypto_data`.`bitcoin_prices`
+
+GROUP BY DATE(price_timestamp)
+ORDER BY date DESC;
+
+
+[0m13:51:25.125810 [debug] [Thread-1 (]: Opening a new connection, currently in state closed
+[0m13:51:25.127608 [debug] [Thread-2 (]: On model.bitcoin_tracker.price_trends: /* {"app": "dbt", "dbt_version": "1.11.2", "profile_name": "bitcoin_tracker", "target_name": "dev", "node_id": "model.bitcoin_tracker.price_trends"} */
+
+
+  create or replace view `dust-labs-485011`.`crypto_data_crypto_data`.`price_trends`
+  OPTIONS()
+  as 
+
+-- Price trends with moving averages
+-- Calculates 7-day and 30-day moving averages for trend analysis
+SELECT 
+  price_timestamp,
+  price_usd,
+  price_eur,
+  price_gbp,
+  
+  -- 7-day moving average (168 hours)
+  AVG(price_usd) OVER (
+    ORDER BY price_timestamp
+    ROWS BETWEEN 167 PRECEDING AND CURRENT ROW
+  ) as ma_7day_usd,
+  
+  -- 30-day moving average (720 hours)
+  AVG(price_usd) OVER (
+    ORDER BY price_timestamp
+    ROWS BETWEEN 719 PRECEDING AND CURRENT ROW
+  ) as ma_30day_usd,
+  
+  -- Deviation from 7-day MA
+  price_usd - AVG(price_usd) OVER (
+    ORDER BY price_timestamp
+    ROWS BETWEEN 167 PRECEDING AND CURRENT ROW
+  ) as deviation_from_7day_ma,
+  
+  -- Percent deviation from 7-day MA
+  ROUND(
+    (price_usd - AVG(price_usd) OVER (
+      ORDER BY price_timestamp
+      ROWS BETWEEN 167 PRECEDING AND CURRENT ROW
+    )) / NULLIF(AVG(price_usd) OVER (
+      ORDER BY price_timestamp
+      ROWS BETWEEN 167 PRECEDING AND CURRENT ROW
+    ), 0) * 100,
+    2
+  ) as pct_deviation_from_7day_ma,
+  
+  -- Trend indicator (above/below MA)
+  CASE 
+    WHEN price_usd > AVG(price_usd) OVER (
+      ORDER BY price_timestamp
+      ROWS BETWEEN 167 PRECEDING AND CURRENT ROW
+    ) THEN 'ABOVE_MA'
+    ELSE 'BELOW_MA'
+  END as trend_vs_7day_ma,
+  
+  -- Market metrics
+  market_cap_usd,
+  volume_24h_usd,
+  price_change_24h_percent
+
+FROM `<<YOUR_PROJECT_HERE>>`.`crypto_data`.`bitcoin_prices`
+
+ORDER BY price_timestamp DESC;
+
+
+[0m13:51:25.128250 [debug] [Thread-2 (]: Opening a new connection, currently in state init
+[0m13:51:25.528302 [debug] [Thread-2 (]: BigQuery adapter: https://console.cloud.google.com/bigquery?project=dust-labs-485011&j=bq:us-central1:316934ca-cdde-42ea-bfcb-823d4d263ac9&page=queryresults
+[0m13:51:25.529444 [error] [Thread-2 (]: BigQuery adapter: https://console.cloud.google.com/bigquery?project=dust-labs-485011&j=bq:us-central1:316934ca-cdde-42ea-bfcb-823d4d263ac9&page=queryresults
+[0m13:51:25.536655 [debug] [Thread-1 (]: BigQuery adapter: https://console.cloud.google.com/bigquery?project=dust-labs-485011&j=bq:us-central1:edbf2a99-4751-45f7-b753-757afce717a8&page=queryresults
+[0m13:51:25.537911 [error] [Thread-1 (]: BigQuery adapter: https://console.cloud.google.com/bigquery?project=dust-labs-485011&j=bq:us-central1:edbf2a99-4751-45f7-b753-757afce717a8&page=queryresults
+[0m13:51:25.546899 [debug] [Thread-1 (]: Database Error in model daily_price_summary (models/daily_price_summary.sql)
+  Not found: Dataset <<YOUR_PROJECT_HERE>>:crypto_data was not found in location us-central1
+  compiled code at target/run/bitcoin_tracker/models/daily_price_summary.sql
+[0m13:51:25.552915 [debug] [Thread-2 (]: Database Error in model price_trends (models/price_trends.sql)
+  Not found: Dataset <<YOUR_PROJECT_HERE>>:crypto_data was not found in location us-central1
+  compiled code at target/run/bitcoin_tracker/models/price_trends.sql
+[0m13:51:25.553854 [debug] [Thread-1 (]: Sending event: {'category': 'dbt', 'action': 'run_model', 'label': '66b9dec3-8fb6-4a09-be87-c0b414d54b95', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7e8f9e7c4aa0>]}
+[0m13:51:25.554846 [debug] [Thread-2 (]: Sending event: {'category': 'dbt', 'action': 'run_model', 'label': '66b9dec3-8fb6-4a09-be87-c0b414d54b95', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7e8f7aa5f530>]}
+[0m13:51:25.556158 [error] [Thread-1 (]: 1 of 2 ERROR creating sql view model crypto_data_crypto_data.daily_price_summary  [[31mERROR[0m in 0.53s]
+[0m13:51:25.557522 [error] [Thread-2 (]: 2 of 2 ERROR creating sql view model crypto_data_crypto_data.price_trends ...... [[31mERROR[0m in 0.54s]
+[0m13:51:25.559140 [debug] [Thread-1 (]: Finished running node model.bitcoin_tracker.daily_price_summary
+[0m13:51:25.560446 [debug] [Thread-2 (]: Finished running node model.bitcoin_tracker.price_trends
+[0m13:51:25.561688 [debug] [Thread-7 (]: Marking all children of 'model.bitcoin_tracker.daily_price_summary' to be skipped because of status 'error'.  Reason: Database Error in model daily_price_summary (models/daily_price_summary.sql)
+  Not found: Dataset <<YOUR_PROJECT_HERE>>:crypto_data was not found in location us-central1
+  compiled code at target/run/bitcoin_tracker/models/daily_price_summary.sql.
+[0m13:51:25.563840 [debug] [Thread-7 (]: Marking all children of 'model.bitcoin_tracker.price_trends' to be skipped because of status 'error'.  Reason: Database Error in model price_trends (models/price_trends.sql)
+  Not found: Dataset <<YOUR_PROJECT_HERE>>:crypto_data was not found in location us-central1
+  compiled code at target/run/bitcoin_tracker/models/price_trends.sql.
+[0m13:51:25.565775 [debug] [MainThread]: Opening a new connection, currently in state closed
+[0m13:51:25.566747 [debug] [MainThread]: Connection 'master' was properly closed.
+[0m13:51:25.567328 [debug] [MainThread]: Connection 'model.bitcoin_tracker.daily_price_summary' was properly closed.
+[0m13:51:25.567877 [debug] [MainThread]: Connection 'model.bitcoin_tracker.price_trends' was properly closed.
+[0m13:51:25.568454 [info ] [MainThread]: 
+[0m13:51:25.569040 [info ] [MainThread]: Finished running 2 view models in 0 hours 0 minutes and 5.09 seconds (5.09s).
+[0m13:51:25.570245 [debug] [MainThread]: Command end result
+[0m13:51:25.604901 [debug] [MainThread]: Wrote artifact WritableManifest to ./target/manifest.json
+[0m13:51:25.606958 [debug] [MainThread]: Wrote artifact SemanticManifest to ./target/semantic_manifest.json
+[0m13:51:25.614200 [debug] [MainThread]: Wrote artifact RunExecutionResult to ./target/run_results.json
+[0m13:51:25.614685 [info ] [MainThread]: 
+[0m13:51:25.615307 [info ] [MainThread]: [31mCompleted with 2 errors, 0 partial successes, and 0 warnings:[0m
+[0m13:51:25.615974 [info ] [MainThread]: 
+[0m13:51:25.616595 [error] [MainThread]: [31mFailure in model daily_price_summary (models/daily_price_summary.sql)[0m
+[0m13:51:25.617269 [error] [MainThread]:   Database Error in model daily_price_summary (models/daily_price_summary.sql)
+  Not found: Dataset <<YOUR_PROJECT_HERE>>:crypto_data was not found in location us-central1
+  compiled code at target/run/bitcoin_tracker/models/daily_price_summary.sql
+[0m13:51:25.617785 [info ] [MainThread]: 
+[0m13:51:25.618379 [info ] [MainThread]:   compiled code at target/compiled/bitcoin_tracker/models/daily_price_summary.sql
+[0m13:51:25.618917 [info ] [MainThread]: 
+[0m13:51:25.619636 [error] [MainThread]: [31mFailure in model price_trends (models/price_trends.sql)[0m
+[0m13:51:25.620472 [error] [MainThread]:   Database Error in model price_trends (models/price_trends.sql)
+  Not found: Dataset <<YOUR_PROJECT_HERE>>:crypto_data was not found in location us-central1
+  compiled code at target/run/bitcoin_tracker/models/price_trends.sql
+[0m13:51:25.621060 [info ] [MainThread]: 
+[0m13:51:25.621704 [info ] [MainThread]:   compiled code at target/compiled/bitcoin_tracker/models/price_trends.sql
+[0m13:51:25.622300 [info ] [MainThread]: 
+[0m13:51:25.622935 [info ] [MainThread]: Done. PASS=0 WARN=0 ERROR=2 SKIP=0 NO-OP=0 TOTAL=2
+[0m13:51:25.623918 [debug] [MainThread]: Resource report: {"command_name": "run", "command_success": false, "command_wall_clock_time": 18.678995, "process_in_blocks": "105608", "process_kernel_time": 2.966149, "process_mem_max_rss": "385776", "process_out_blocks": "3472", "process_user_time": 12.638204}
+[0m13:51:25.624714 [debug] [MainThread]: Command `dbt run` failed at 13:51:25.624531 after 18.68 seconds
+[0m13:51:25.625353 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'invocation', 'label': 'end', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7e8f9e938bf0>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7e8f7b35f140>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7e8f9ecdd370>]}
+[0m13:51:25.626047 [debug] [MainThread]: Flushing usage events
+[0m13:51:26.206092 [debug] [MainThread]: An error was encountered while trying to flush usage events
+[0m13:51:43.275972 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'invocation', 'label': 'start', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x77e3662d63c0>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x77e3660bb980>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x77e3661e8860>]}
+
+
+============================== 13:51:43.280121 | b95af651-d634-4fdc-961e-1fa8c8568c40 ==============================
+[0m13:51:43.280121 [info ] [MainThread]: Running with dbt=1.11.2
+[0m13:51:43.281204 [debug] [MainThread]: running dbt with arguments {'printer_width': '80', 'invocation_command': 'dbt run --project-dir . --profiles-dir .', 'target_path': 'None', 'quiet': 'False', 'use_colors': 'True', 'use_experimental_parser': 'False', 'write_json': 'True', 'partial_parse': 'True', 'warn_error': 'None', 'log_path': 'logs', 'debug': 'False', 'indirect_selection': 'eager', 'introspect': 'True', 'cache_selected_only': 'False', 'no_print': 'None', 'send_anonymous_usage_stats': 'True', 'static_parser': 'True', 'version_check': 'True', 'fail_fast': 'False', 'log_cache_events': 'False', 'warn_error_options': 'WarnErrorOptionsV2(error=[], warn=[], silence=[])', 'empty': 'False', 'log_format': 'default', 'profiles_dir': '.'}
+[0m13:51:53.418543 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'project_id', 'label': 'b95af651-d634-4fdc-961e-1fa8c8568c40', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x77e343abef60>]}
+[0m13:51:53.511277 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'adapter_info', 'label': 'b95af651-d634-4fdc-961e-1fa8c8568c40', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x77e34d21c740>]}
+[0m13:51:53.512064 [info ] [MainThread]: Registered adapter: bigquery=1.11.0
+[0m13:51:53.872619 [debug] [MainThread]: checksum: 3d40d8bbe1bef07db1c24822f2dbfff8bc07f2a48ed4fe2658a40653aec0b54b, vars: {}, profile: , target: , version: 1.11.2
+[0m13:51:54.038031 [debug] [MainThread]: Partial parsing enabled: 0 files deleted, 0 files added, 1 files changed.
+[0m13:51:54.039109 [debug] [MainThread]: Partial parsing: updated file: bitcoin_tracker://models/schema.yml
+[0m13:51:54.792654 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'load_project', 'label': 'b95af651-d634-4fdc-961e-1fa8c8568c40', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x77e3435a5400>]}
+[0m13:51:54.899330 [debug] [MainThread]: Wrote artifact WritableManifest to ./target/manifest.json
+[0m13:51:54.902008 [debug] [MainThread]: Wrote artifact SemanticManifest to ./target/semantic_manifest.json
+[0m13:51:54.917717 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'resource_counts', 'label': 'b95af651-d634-4fdc-961e-1fa8c8568c40', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x77e342cbc0e0>]}
+[0m13:51:54.918450 [info ] [MainThread]: Found 2 models, 7 data tests, 1 source, 538 macros
+[0m13:51:54.919083 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'runnable_timing', 'label': 'b95af651-d634-4fdc-961e-1fa8c8568c40', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x77e342eb84a0>]}
+[0m13:51:54.921586 [info ] [MainThread]: 
+[0m13:51:54.922334 [info ] [MainThread]: Concurrency: 4 threads (target='dev')
+[0m13:51:54.922984 [info ] [MainThread]: 
+[0m13:51:54.923925 [debug] [MainThread]: Acquiring new bigquery connection 'master'
+[0m13:51:54.929693 [debug] [ThreadPool]: Acquiring new bigquery connection 'list_dust-labs-485011'
+[0m13:51:54.930315 [debug] [ThreadPool]: Opening a new connection, currently in state init
+[0m13:51:56.696909 [debug] [ThreadPool]: Re-using an available connection from the pool (formerly list_dust-labs-485011, now list_dust-labs-485011_crypto_data_crypto_data)
+[0m13:51:56.698418 [debug] [ThreadPool]: Opening a new connection, currently in state closed
+[0m13:51:56.968311 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'runnable_timing', 'label': 'b95af651-d634-4fdc-961e-1fa8c8568c40', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x77e34d1de810>]}
+[0m13:51:56.971033 [debug] [MainThread]: Opening a new connection, currently in state init
+[0m13:51:56.983311 [debug] [Thread-1 (]: Began running node model.bitcoin_tracker.daily_price_summary
+[0m13:51:56.986289 [info ] [Thread-1 (]: 1 of 2 START sql view model crypto_data_crypto_data.daily_price_summary ........ [RUN]
+[0m13:51:56.989029 [debug] [Thread-1 (]: Re-using an available connection from the pool (formerly list_dust-labs-485011_crypto_data_crypto_data, now model.bitcoin_tracker.daily_price_summary)
+[0m13:51:56.991468 [debug] [Thread-2 (]: Began running node model.bitcoin_tracker.price_trends
+[0m13:51:56.993838 [debug] [Thread-1 (]: Began compiling node model.bitcoin_tracker.daily_price_summary
+[0m13:51:56.996899 [info ] [Thread-2 (]: 2 of 2 START sql view model crypto_data_crypto_data.price_trends ............... [RUN]
+[0m13:51:57.012869 [debug] [Thread-2 (]: Acquiring new bigquery connection 'model.bitcoin_tracker.price_trends'
+[0m13:51:57.019129 [debug] [Thread-2 (]: Began compiling node model.bitcoin_tracker.price_trends
+[0m13:51:57.024526 [debug] [Thread-1 (]: Writing injected SQL for node "model.bitcoin_tracker.daily_price_summary"
+[0m13:51:57.029703 [debug] [Thread-2 (]: Writing injected SQL for node "model.bitcoin_tracker.price_trends"
+[0m13:51:57.031088 [debug] [Thread-1 (]: Began executing node model.bitcoin_tracker.daily_price_summary
+[0m13:51:57.031819 [debug] [Thread-2 (]: Began executing node model.bitcoin_tracker.price_trends
+[0m13:51:57.112690 [debug] [Thread-2 (]: Writing runtime sql for node "model.bitcoin_tracker.price_trends"
+[0m13:51:57.113680 [debug] [Thread-1 (]: Writing runtime sql for node "model.bitcoin_tracker.daily_price_summary"
+[0m13:51:57.114913 [debug] [Thread-2 (]: On model.bitcoin_tracker.price_trends: /* {"app": "dbt", "dbt_version": "1.11.2", "profile_name": "bitcoin_tracker", "target_name": "dev", "node_id": "model.bitcoin_tracker.price_trends"} */
+
+
+  create or replace view `dust-labs-485011`.`crypto_data_crypto_data`.`price_trends`
+  OPTIONS()
+  as 
+
+-- Price trends with moving averages
+-- Calculates 7-day and 30-day moving averages for trend analysis
+SELECT 
+  price_timestamp,
+  price_usd,
+  price_eur,
+  price_gbp,
+  
+  -- 7-day moving average (168 hours)
+  AVG(price_usd) OVER (
+    ORDER BY price_timestamp
+    ROWS BETWEEN 167 PRECEDING AND CURRENT ROW
+  ) as ma_7day_usd,
+  
+  -- 30-day moving average (720 hours)
+  AVG(price_usd) OVER (
+    ORDER BY price_timestamp
+    ROWS BETWEEN 719 PRECEDING AND CURRENT ROW
+  ) as ma_30day_usd,
+  
+  -- Deviation from 7-day MA
+  price_usd - AVG(price_usd) OVER (
+    ORDER BY price_timestamp
+    ROWS BETWEEN 167 PRECEDING AND CURRENT ROW
+  ) as deviation_from_7day_ma,
+  
+  -- Percent deviation from 7-day MA
+  ROUND(
+    (price_usd - AVG(price_usd) OVER (
+      ORDER BY price_timestamp
+      ROWS BETWEEN 167 PRECEDING AND CURRENT ROW
+    )) / NULLIF(AVG(price_usd) OVER (
+      ORDER BY price_timestamp
+      ROWS BETWEEN 167 PRECEDING AND CURRENT ROW
+    ), 0) * 100,
+    2
+  ) as pct_deviation_from_7day_ma,
+  
+  -- Trend indicator (above/below MA)
+  CASE 
+    WHEN price_usd > AVG(price_usd) OVER (
+      ORDER BY price_timestamp
+      ROWS BETWEEN 167 PRECEDING AND CURRENT ROW
+    ) THEN 'ABOVE_MA'
+    ELSE 'BELOW_MA'
+  END as trend_vs_7day_ma,
+  
+  -- Market metrics
+  market_cap_usd,
+  volume_24h_usd,
+  price_change_24h_percent
+
+FROM `dust-labs-485011`.`crypto_data`.`bitcoin_prices`
+
+ORDER BY price_timestamp DESC;
+
+
+[0m13:51:57.115891 [debug] [Thread-1 (]: On model.bitcoin_tracker.daily_price_summary: /* {"app": "dbt", "dbt_version": "1.11.2", "profile_name": "bitcoin_tracker", "target_name": "dev", "node_id": "model.bitcoin_tracker.daily_price_summary"} */
+
+
+  create or replace view `dust-labs-485011`.`crypto_data_crypto_data`.`daily_price_summary`
+  OPTIONS()
+  as 
+
+-- Daily Bitcoin price summary
+-- Calculates daily OHLC (Open, High, Low, Close) and volatility metrics
+SELECT 
+  DATE(price_timestamp) as date,
+  
+  -- Price statistics
+  MIN(price_usd) as min_price_usd,
+  MAX(price_usd) as max_price_usd,
+  AVG(price_usd) as avg_price_usd,
+  FIRST_VALUE(price_usd) OVER (PARTITION BY DATE(price_timestamp) ORDER BY price_timestamp ASC) as open_price_usd,
+  FIRST_VALUE(price_usd) OVER (PARTITION BY DATE(price_timestamp) ORDER BY price_timestamp DESC) as close_price_usd,
+  
+  -- Volatility
+  STDDEV(price_usd) as daily_volatility,
+  MAX(price_usd) - MIN(price_usd) as price_range,
+  
+  -- Volume and market cap
+  AVG(market_cap_usd) as avg_market_cap_usd,
+  SUM(volume_24h_usd) / COUNT(*) as avg_volume_24h_usd,  -- Average to avoid double counting
+  
+  -- Additional metrics
+  AVG(price_eur) as avg_price_eur,
+  AVG(price_gbp) as avg_price_gbp,
+  COUNT(*) as data_points,
+  MIN(price_timestamp) as first_update,
+  MAX(price_timestamp) as last_update
+
+FROM `dust-labs-485011`.`crypto_data`.`bitcoin_prices`
+
+GROUP BY DATE(price_timestamp)
+ORDER BY date DESC;
+
+
+[0m13:51:57.116507 [debug] [Thread-2 (]: Opening a new connection, currently in state init
+[0m13:51:57.117124 [debug] [Thread-1 (]: Opening a new connection, currently in state closed
+[0m13:51:57.623013 [debug] [Thread-2 (]: BigQuery adapter: https://console.cloud.google.com/bigquery?project=dust-labs-485011&j=bq:us-central1:9c40d715-1af7-4f0d-8ed4-268f89fdde53&page=queryresults
+[0m13:51:57.635224 [debug] [Thread-1 (]: BigQuery adapter: https://console.cloud.google.com/bigquery?project=dust-labs-485011&j=bq:us-central1:13635e1b-091a-4627-a024-ad6227f1452b&page=queryresults
+[0m13:51:57.836653 [error] [Thread-1 (]: BigQuery adapter: https://console.cloud.google.com/bigquery?project=dust-labs-485011&j=bq:us-central1:13635e1b-091a-4627-a024-ad6227f1452b&page=queryresults
+[0m13:51:57.863139 [debug] [Thread-1 (]: Database Error in model daily_price_summary (models/daily_price_summary.sql)
+  SELECT list expression references column price_usd which is neither grouped nor aggregated at [17:15]
+  compiled code at target/run/bitcoin_tracker/models/daily_price_summary.sql
+[0m13:51:57.868158 [debug] [Thread-1 (]: Sending event: {'category': 'dbt', 'action': 'run_model', 'label': 'b95af651-d634-4fdc-961e-1fa8c8568c40', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x77e34389f320>]}
+[0m13:51:57.869921 [error] [Thread-1 (]: 1 of 2 ERROR creating sql view model crypto_data_crypto_data.daily_price_summary  [[31mERROR[0m in 0.88s]
+[0m13:51:57.871935 [debug] [Thread-1 (]: Finished running node model.bitcoin_tracker.daily_price_summary
+[0m13:51:57.873521 [debug] [Thread-7 (]: Marking all children of 'model.bitcoin_tracker.daily_price_summary' to be skipped because of status 'error'.  Reason: Database Error in model daily_price_summary (models/daily_price_summary.sql)
+  SELECT list expression references column price_usd which is neither grouped nor aggregated at [17:15]
+  compiled code at target/run/bitcoin_tracker/models/daily_price_summary.sql.
+[0m13:51:58.082130 [debug] [Thread-2 (]: SQL status: OK in 0.457 seconds
+[0m13:51:58.168423 [debug] [Thread-2 (]: Sending event: {'category': 'dbt', 'action': 'run_model', 'label': 'b95af651-d634-4fdc-961e-1fa8c8568c40', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x77e3466ba690>]}
+[0m13:51:58.169427 [info ] [Thread-2 (]: 2 of 2 OK created sql view model crypto_data_crypto_data.price_trends .......... [[32mCREATE VIEW (0 processed)[0m in 1.16s]
+[0m13:51:58.170454 [debug] [Thread-2 (]: Finished running node model.bitcoin_tracker.price_trends
+[0m13:51:58.172599 [debug] [MainThread]: Opening a new connection, currently in state closed
+[0m13:51:58.173427 [debug] [MainThread]: Connection 'master' was properly closed.
+[0m13:51:58.174030 [debug] [MainThread]: Connection 'model.bitcoin_tracker.daily_price_summary' was properly closed.
+[0m13:51:58.174528 [debug] [MainThread]: Connection 'model.bitcoin_tracker.price_trends' was properly closed.
+[0m13:51:58.175200 [info ] [MainThread]: 
+[0m13:51:58.175923 [info ] [MainThread]: Finished running 2 view models in 0 hours 0 minutes and 3.25 seconds (3.25s).
+[0m13:51:58.177391 [debug] [MainThread]: Command end result
+[0m13:51:58.207604 [debug] [MainThread]: Wrote artifact WritableManifest to ./target/manifest.json
+[0m13:51:58.209737 [debug] [MainThread]: Wrote artifact SemanticManifest to ./target/semantic_manifest.json
+[0m13:51:58.217224 [debug] [MainThread]: Wrote artifact RunExecutionResult to ./target/run_results.json
+[0m13:51:58.217804 [info ] [MainThread]: 
+[0m13:51:58.218434 [info ] [MainThread]: [31mCompleted with 1 error, 0 partial successes, and 0 warnings:[0m
+[0m13:51:58.219029 [info ] [MainThread]: 
+[0m13:51:58.219799 [error] [MainThread]: [31mFailure in model daily_price_summary (models/daily_price_summary.sql)[0m
+[0m13:51:58.220507 [error] [MainThread]:   Database Error in model daily_price_summary (models/daily_price_summary.sql)
+  SELECT list expression references column price_usd which is neither grouped nor aggregated at [17:15]
+  compiled code at target/run/bitcoin_tracker/models/daily_price_summary.sql
+[0m13:51:58.221078 [info ] [MainThread]: 
+[0m13:51:58.221714 [info ] [MainThread]:   compiled code at target/compiled/bitcoin_tracker/models/daily_price_summary.sql
+[0m13:51:58.222256 [info ] [MainThread]: 
+[0m13:51:58.222886 [info ] [MainThread]: Done. PASS=1 WARN=0 ERROR=1 SKIP=0 NO-OP=0 TOTAL=2
+[0m13:51:58.223867 [debug] [MainThread]: Resource report: {"command_name": "run", "command_success": false, "command_wall_clock_time": 15.028782, "process_in_blocks": "16", "process_kernel_time": 2.699808, "process_mem_max_rss": "393576", "process_out_blocks": "3464", "process_user_time": 11.535363}
+[0m13:51:58.224530 [debug] [MainThread]: Command `dbt run` failed at 13:51:58.224382 after 15.03 seconds
+[0m13:51:58.225244 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'invocation', 'label': 'end', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x77e34d21ff20>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x77e342e448f0>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x77e342d4c260>]}
+[0m13:51:58.225817 [debug] [MainThread]: Flushing usage events
+[0m13:51:58.673564 [debug] [MainThread]: An error was encountered while trying to flush usage events
+[0m13:52:29.932866 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'invocation', 'label': 'start', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7ea70b0f9100>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7ea70b7077a0>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7ea70bb6ba40>]}
+
+
+============================== 13:52:29.937016 | af6d6b41-ebbf-4898-9191-49bf0f7fcecc ==============================
+[0m13:52:29.937016 [info ] [MainThread]: Running with dbt=1.11.2
+[0m13:52:29.937910 [debug] [MainThread]: running dbt with arguments {'version_check': 'True', 'log_format': 'default', 'profiles_dir': '.', 'printer_width': '80', 'log_cache_events': 'False', 'invocation_command': 'dbt run --project-dir . --profiles-dir .', 'fail_fast': 'False', 'target_path': 'None', 'quiet': 'False', 'use_colors': 'True', 'debug': 'False', 'send_anonymous_usage_stats': 'True', 'log_path': 'logs', 'warn_error': 'None', 'warn_error_options': 'WarnErrorOptionsV2(error=[], warn=[], silence=[])', 'partial_parse': 'True', 'cache_selected_only': 'False', 'no_print': 'None', 'introspect': 'True', 'empty': 'False', 'write_json': 'True', 'use_experimental_parser': 'False', 'static_parser': 'True', 'indirect_selection': 'eager'}
+[0m13:52:39.801609 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'project_id', 'label': 'af6d6b41-ebbf-4898-9191-49bf0f7fcecc', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7ea70b64ef00>]}
+[0m13:52:39.891636 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'adapter_info', 'label': 'af6d6b41-ebbf-4898-9191-49bf0f7fcecc', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7ea6f1ff7980>]}
+[0m13:52:39.892404 [info ] [MainThread]: Registered adapter: bigquery=1.11.0
+[0m13:52:40.247687 [debug] [MainThread]: checksum: 3d40d8bbe1bef07db1c24822f2dbfff8bc07f2a48ed4fe2658a40653aec0b54b, vars: {}, profile: , target: , version: 1.11.2
+[0m13:52:40.410252 [debug] [MainThread]: Partial parsing enabled: 0 files deleted, 0 files added, 1 files changed.
+[0m13:52:40.411080 [debug] [MainThread]: Partial parsing: updated file: bitcoin_tracker://models/daily_price_summary.sql
+[0m13:52:40.998344 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'load_project', 'label': 'af6d6b41-ebbf-4898-9191-49bf0f7fcecc', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7ea6e83a5c40>]}
+[0m13:52:41.112052 [debug] [MainThread]: Wrote artifact WritableManifest to ./target/manifest.json
+[0m13:52:41.114369 [debug] [MainThread]: Wrote artifact SemanticManifest to ./target/semantic_manifest.json
+[0m13:52:41.130132 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'resource_counts', 'label': 'af6d6b41-ebbf-4898-9191-49bf0f7fcecc', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7ea6e86fb650>]}
+[0m13:52:41.130802 [info ] [MainThread]: Found 2 models, 7 data tests, 1 source, 538 macros
+[0m13:52:41.131503 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'runnable_timing', 'label': 'af6d6b41-ebbf-4898-9191-49bf0f7fcecc', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7ea6e7bf1310>]}
+[0m13:52:41.134216 [info ] [MainThread]: 
+[0m13:52:41.134825 [info ] [MainThread]: Concurrency: 4 threads (target='dev')
+[0m13:52:41.135430 [info ] [MainThread]: 
+[0m13:52:41.136310 [debug] [MainThread]: Acquiring new bigquery connection 'master'
+[0m13:52:41.141916 [debug] [ThreadPool]: Acquiring new bigquery connection 'list_dust-labs-485011'
+[0m13:52:41.142814 [debug] [ThreadPool]: Opening a new connection, currently in state init
+[0m13:52:42.284370 [debug] [ThreadPool]: Re-using an available connection from the pool (formerly list_dust-labs-485011, now list_dust-labs-485011_crypto_data_crypto_data)
+[0m13:52:42.285982 [debug] [ThreadPool]: Opening a new connection, currently in state closed
+[0m13:52:42.597475 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'runnable_timing', 'label': 'af6d6b41-ebbf-4898-9191-49bf0f7fcecc', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7ea6e85431d0>]}
+[0m13:52:42.599986 [debug] [MainThread]: Opening a new connection, currently in state init
+[0m13:52:42.610127 [debug] [Thread-1 (]: Began running node model.bitcoin_tracker.daily_price_summary
+[0m13:52:42.611492 [debug] [Thread-2 (]: Began running node model.bitcoin_tracker.price_trends
+[0m13:52:42.612898 [info ] [Thread-1 (]: 1 of 2 START sql view model crypto_data_crypto_data.daily_price_summary ........ [RUN]
+[0m13:52:42.615879 [debug] [Thread-1 (]: Re-using an available connection from the pool (formerly list_dust-labs-485011_crypto_data_crypto_data, now model.bitcoin_tracker.daily_price_summary)
+[0m13:52:42.614167 [info ] [Thread-2 (]: 2 of 2 START sql view model crypto_data_crypto_data.price_trends ............... [RUN]
+[0m13:52:42.617312 [debug] [Thread-1 (]: Began compiling node model.bitcoin_tracker.daily_price_summary
+[0m13:52:42.618586 [debug] [Thread-2 (]: Acquiring new bigquery connection 'model.bitcoin_tracker.price_trends'
+[0m13:52:42.627142 [debug] [Thread-2 (]: Began compiling node model.bitcoin_tracker.price_trends
+[0m13:52:42.632338 [debug] [Thread-1 (]: Writing injected SQL for node "model.bitcoin_tracker.daily_price_summary"
+[0m13:52:42.637049 [debug] [Thread-2 (]: Writing injected SQL for node "model.bitcoin_tracker.price_trends"
+[0m13:52:42.638824 [debug] [Thread-2 (]: Began executing node model.bitcoin_tracker.price_trends
+[0m13:52:42.639453 [debug] [Thread-1 (]: Began executing node model.bitcoin_tracker.daily_price_summary
+[0m13:52:42.720905 [debug] [Thread-1 (]: Writing runtime sql for node "model.bitcoin_tracker.daily_price_summary"
+[0m13:52:42.721689 [debug] [Thread-2 (]: Writing runtime sql for node "model.bitcoin_tracker.price_trends"
+[0m13:52:42.722783 [debug] [Thread-1 (]: On model.bitcoin_tracker.daily_price_summary: /* {"app": "dbt", "dbt_version": "1.11.2", "profile_name": "bitcoin_tracker", "target_name": "dev", "node_id": "model.bitcoin_tracker.daily_price_summary"} */
+
+
+  create or replace view `dust-labs-485011`.`crypto_data_crypto_data`.`daily_price_summary`
+  OPTIONS()
+  as 
+
+-- Daily Bitcoin price summary
+-- Calculates daily OHLC (Open, High, Low, Close) and volatility metrics
+WITH daily_data AS (
+  SELECT 
+    DATE(price_timestamp) as date,
+    price_usd,
+    price_eur,
+    price_gbp,
+    market_cap_usd,
+    volume_24h_usd,
+    price_timestamp,
+    ROW_NUMBER() OVER (PARTITION BY DATE(price_timestamp) ORDER BY price_timestamp ASC) as first_row,
+    ROW_NUMBER() OVER (PARTITION BY DATE(price_timestamp) ORDER BY price_timestamp DESC) as last_row
+  FROM `dust-labs-485011`.`crypto_data`.`bitcoin_prices`
+)
+SELECT 
+  date,
+  
+  -- Price statistics
+  MIN(price_usd) as min_price_usd,
+  MAX(price_usd) as max_price_usd,
+  AVG(price_usd) as avg_price_usd,
+  MAX(CASE WHEN first_row = 1 THEN price_usd END) as open_price_usd,
+  MAX(CASE WHEN last_row = 1 THEN price_usd END) as close_price_usd,
+  
+  -- Volatility
+  STDDEV(price_usd) as daily_volatility,
+  MAX(price_usd) - MIN(price_usd) as price_range,
+  
+  -- Volume and market cap
+  AVG(market_cap_usd) as avg_market_cap_usd,
+  AVG(volume_24h_usd) as avg_volume_24h_usd,
+  
+  -- Additional metrics
+  AVG(price_eur) as avg_price_eur,
+  AVG(price_gbp) as avg_price_gbp,
+  COUNT(*) as data_points,
+  MIN(price_timestamp) as first_update,
+  MAX(price_timestamp) as last_update
+
+FROM daily_data
+GROUP BY date
+ORDER BY date DESC;
+
+
+[0m13:52:42.723415 [debug] [Thread-1 (]: Opening a new connection, currently in state closed
+[0m13:52:42.725308 [debug] [Thread-2 (]: On model.bitcoin_tracker.price_trends: /* {"app": "dbt", "dbt_version": "1.11.2", "profile_name": "bitcoin_tracker", "target_name": "dev", "node_id": "model.bitcoin_tracker.price_trends"} */
+
+
+  create or replace view `dust-labs-485011`.`crypto_data_crypto_data`.`price_trends`
+  OPTIONS()
+  as 
+
+-- Price trends with moving averages
+-- Calculates 7-day and 30-day moving averages for trend analysis
+SELECT 
+  price_timestamp,
+  price_usd,
+  price_eur,
+  price_gbp,
+  
+  -- 7-day moving average (168 hours)
+  AVG(price_usd) OVER (
+    ORDER BY price_timestamp
+    ROWS BETWEEN 167 PRECEDING AND CURRENT ROW
+  ) as ma_7day_usd,
+  
+  -- 30-day moving average (720 hours)
+  AVG(price_usd) OVER (
+    ORDER BY price_timestamp
+    ROWS BETWEEN 719 PRECEDING AND CURRENT ROW
+  ) as ma_30day_usd,
+  
+  -- Deviation from 7-day MA
+  price_usd - AVG(price_usd) OVER (
+    ORDER BY price_timestamp
+    ROWS BETWEEN 167 PRECEDING AND CURRENT ROW
+  ) as deviation_from_7day_ma,
+  
+  -- Percent deviation from 7-day MA
+  ROUND(
+    (price_usd - AVG(price_usd) OVER (
+      ORDER BY price_timestamp
+      ROWS BETWEEN 167 PRECEDING AND CURRENT ROW
+    )) / NULLIF(AVG(price_usd) OVER (
+      ORDER BY price_timestamp
+      ROWS BETWEEN 167 PRECEDING AND CURRENT ROW
+    ), 0) * 100,
+    2
+  ) as pct_deviation_from_7day_ma,
+  
+  -- Trend indicator (above/below MA)
+  CASE 
+    WHEN price_usd > AVG(price_usd) OVER (
+      ORDER BY price_timestamp
+      ROWS BETWEEN 167 PRECEDING AND CURRENT ROW
+    ) THEN 'ABOVE_MA'
+    ELSE 'BELOW_MA'
+  END as trend_vs_7day_ma,
+  
+  -- Market metrics
+  market_cap_usd,
+  volume_24h_usd,
+  price_change_24h_percent
+
+FROM `dust-labs-485011`.`crypto_data`.`bitcoin_prices`
+
+ORDER BY price_timestamp DESC;
+
+
+[0m13:52:42.725978 [debug] [Thread-2 (]: Opening a new connection, currently in state init
+[0m13:52:43.167506 [debug] [Thread-1 (]: BigQuery adapter: https://console.cloud.google.com/bigquery?project=dust-labs-485011&j=bq:us-central1:11f1ae04-b2f1-4857-a3f0-2a19390b5cd5&page=queryresults
+[0m13:52:43.182992 [debug] [Thread-2 (]: BigQuery adapter: https://console.cloud.google.com/bigquery?project=dust-labs-485011&j=bq:us-central1:f814e296-67d1-44c2-ab24-d29f71cd4c5f&page=queryresults
+[0m13:52:43.599623 [debug] [Thread-1 (]: SQL status: OK in 0.430 seconds
+[0m13:52:43.603265 [debug] [Thread-2 (]: SQL status: OK in 0.417 seconds
+[0m13:52:43.708999 [debug] [Thread-2 (]: Sending event: {'category': 'dbt', 'action': 'run_model', 'label': 'af6d6b41-ebbf-4898-9191-49bf0f7fcecc', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7ea70b7c0ce0>]}
+[0m13:52:43.709539 [debug] [Thread-1 (]: Sending event: {'category': 'dbt', 'action': 'run_model', 'label': 'af6d6b41-ebbf-4898-9191-49bf0f7fcecc', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7ea6eb45e750>]}
+[0m13:52:43.710407 [info ] [Thread-2 (]: 2 of 2 OK created sql view model crypto_data_crypto_data.price_trends .......... [[32mCREATE VIEW (0 processed)[0m in 1.09s]
+[0m13:52:43.711331 [info ] [Thread-1 (]: 1 of 2 OK created sql view model crypto_data_crypto_data.daily_price_summary ... [[32mCREATE VIEW (0 processed)[0m in 1.09s]
+[0m13:52:43.712279 [debug] [Thread-2 (]: Finished running node model.bitcoin_tracker.price_trends
+[0m13:52:43.713163 [debug] [Thread-1 (]: Finished running node model.bitcoin_tracker.daily_price_summary
+[0m13:52:43.715025 [debug] [MainThread]: Opening a new connection, currently in state closed
+[0m13:52:43.715771 [debug] [MainThread]: Connection 'master' was properly closed.
+[0m13:52:43.716225 [debug] [MainThread]: Connection 'model.bitcoin_tracker.daily_price_summary' was properly closed.
+[0m13:52:43.716850 [debug] [MainThread]: Connection 'model.bitcoin_tracker.price_trends' was properly closed.
+[0m13:52:43.717606 [info ] [MainThread]: 
+[0m13:52:43.718339 [info ] [MainThread]: Finished running 2 view models in 0 hours 0 minutes and 2.58 seconds (2.58s).
+[0m13:52:43.719658 [debug] [MainThread]: Command end result
+[0m13:52:43.749695 [debug] [MainThread]: Wrote artifact WritableManifest to ./target/manifest.json
+[0m13:52:43.752164 [debug] [MainThread]: Wrote artifact SemanticManifest to ./target/semantic_manifest.json
+[0m13:52:43.760732 [debug] [MainThread]: Wrote artifact RunExecutionResult to ./target/run_results.json
+[0m13:52:43.761324 [info ] [MainThread]: 
+[0m13:52:43.762104 [info ] [MainThread]: [32mCompleted successfully[0m
+[0m13:52:43.762657 [info ] [MainThread]: 
+[0m13:52:43.763520 [info ] [MainThread]: Done. PASS=2 WARN=0 ERROR=0 SKIP=0 NO-OP=0 TOTAL=2
+[0m13:52:43.764434 [debug] [MainThread]: Resource report: {"command_name": "run", "command_success": true, "command_wall_clock_time": 13.911765, "process_in_blocks": "0", "process_kernel_time": 2.683035, "process_mem_max_rss": "391016", "process_out_blocks": "3480", "process_user_time": 11.189977}
+[0m13:52:43.765145 [debug] [MainThread]: Command `dbt run` succeeded at 13:52:43.764987 after 13.91 seconds
+[0m13:52:43.765624 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'invocation', 'label': 'end', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7ea70b0c5fd0>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7ea6e82b8230>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7ea6e82b8380>]}
+[0m13:52:43.766152 [debug] [MainThread]: Flushing usage events
+[0m13:52:44.238468 [debug] [MainThread]: An error was encountered while trying to flush usage events
+[0m13:53:53.454711 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'invocation', 'label': 'start', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7e0da6d1ca70>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7e0da4fc3c20>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7e0da4867f50>]}
+
+
+============================== 13:53:53.458705 | 837548b3-9f04-4e9f-ae7e-1b0cc93afef6 ==============================
+[0m13:53:53.458705 [info ] [MainThread]: Running with dbt=1.11.2
+[0m13:53:53.459752 [debug] [MainThread]: running dbt with arguments {'target_path': 'None', 'log_format': 'default', 'write_json': 'True', 'log_cache_events': 'False', 'send_anonymous_usage_stats': 'True', 'warn_error_options': 'WarnErrorOptionsV2(error=[], warn=[], silence=[])', 'use_colors': 'True', 'warn_error': 'None', 'use_experimental_parser': 'False', 'no_print': 'None', 'static_parser': 'True', 'empty': 'False', 'log_path': 'logs', 'indirect_selection': 'eager', 'invocation_command': 'dbt run --project-dir . --profiles-dir .', 'version_check': 'True', 'printer_width': '80', 'fail_fast': 'False', 'quiet': 'False', 'introspect': 'True', 'debug': 'False', 'cache_selected_only': 'False', 'partial_parse': 'True', 'profiles_dir': '.'}
+[0m13:54:03.339736 [error] [MainThread]: Encountered an error:
+Compilation Error
+  Could not render {{ this.identifier }}: 'this' is undefined
+[0m13:54:03.340704 [debug] [MainThread]: Resource report: {"command_name": "run", "command_success": false, "command_wall_clock_time": 9.968525, "process_in_blocks": "0", "process_kernel_time": 2.50506, "process_mem_max_rss": "364936", "process_out_blocks": "8", "process_user_time": 9.519828}
+[0m13:54:03.341689 [debug] [MainThread]: Command `dbt run` failed at 13:54:03.341545 after 9.97 seconds
+[0m13:54:03.342366 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'invocation', 'label': 'end', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7e0da6d1ca70>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7e0d82449ac0>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7e0d87842210>]}
+[0m13:54:03.343076 [debug] [MainThread]: Flushing usage events
+[0m13:54:03.831546 [debug] [MainThread]: An error was encountered while trying to flush usage events
+[0m13:54:15.978707 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'invocation', 'label': 'start', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7423881fd970>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7423878d3ef0>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x74238801c920>]}
+
+
+============================== 13:54:15.983620 | d2b605ee-fd04-48ed-bdbf-a8737cae761b ==============================
+[0m13:54:15.983620 [info ] [MainThread]: Running with dbt=1.11.2
+[0m13:54:15.984576 [debug] [MainThread]: running dbt with arguments {'partial_parse': 'True', 'quiet': 'False', 'log_cache_events': 'False', 'printer_width': '80', 'warn_error': 'None', 'introspect': 'True', 'warn_error_options': 'WarnErrorOptionsV2(error=[], warn=[], silence=[])', 'debug': 'False', 'profiles_dir': '.', 'version_check': 'True', 'static_parser': 'True', 'log_format': 'default', 'invocation_command': 'dbt run --project-dir . --profiles-dir .', 'use_experimental_parser': 'False', 'fail_fast': 'False', 'target_path': 'None', 'no_print': 'None', 'log_path': 'logs', 'indirect_selection': 'eager', 'write_json': 'True', 'send_anonymous_usage_stats': 'True', 'cache_selected_only': 'False', 'empty': 'False', 'use_colors': 'True'}
+[0m13:54:25.878786 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'project_id', 'label': 'd2b605ee-fd04-48ed-bdbf-a8737cae761b', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x74236aa85010>]}
+[0m13:54:25.969865 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'adapter_info', 'label': 'd2b605ee-fd04-48ed-bdbf-a8737cae761b', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x742366b25af0>]}
+[0m13:54:25.970636 [info ] [MainThread]: Registered adapter: bigquery=1.11.0
+[0m13:54:26.320490 [debug] [MainThread]: checksum: 3d40d8bbe1bef07db1c24822f2dbfff8bc07f2a48ed4fe2658a40653aec0b54b, vars: {}, profile: , target: , version: 1.11.2
+[0m13:54:26.481972 [debug] [MainThread]: Partial parsing enabled: 0 files deleted, 1 files added, 0 files changed.
+[0m13:54:26.482668 [debug] [MainThread]: Partial parsing: added file: bitcoin_tracker://macros/get_custom_schema.sql
+[0m13:54:26.485564 [info ] [MainThread]: Unable to do partial parsing because change detected to override macro. Starting full parse.
+[0m13:54:28.402087 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'load_project', 'label': 'd2b605ee-fd04-48ed-bdbf-a8737cae761b', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x742364259df0>]}
+[0m13:54:28.515346 [debug] [MainThread]: Wrote artifact WritableManifest to ./target/manifest.json
+[0m13:54:28.517709 [debug] [MainThread]: Wrote artifact SemanticManifest to ./target/semantic_manifest.json
+[0m13:54:28.535203 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'resource_counts', 'label': 'd2b605ee-fd04-48ed-bdbf-a8737cae761b', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7423650cd760>]}
+[0m13:54:28.535999 [info ] [MainThread]: Found 2 models, 7 data tests, 1 source, 539 macros
+[0m13:54:28.536633 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'runnable_timing', 'label': 'd2b605ee-fd04-48ed-bdbf-a8737cae761b', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x74236506cb90>]}
+[0m13:54:28.539427 [info ] [MainThread]: 
+[0m13:54:28.540353 [info ] [MainThread]: Concurrency: 4 threads (target='dev')
+[0m13:54:28.541142 [info ] [MainThread]: 
+[0m13:54:28.542193 [debug] [MainThread]: Acquiring new bigquery connection 'master'
+[0m13:54:28.548833 [debug] [ThreadPool]: Acquiring new bigquery connection 'list_dust-labs-485011'
+[0m13:54:28.549759 [debug] [ThreadPool]: Opening a new connection, currently in state init
+[0m13:54:29.678071 [debug] [ThreadPool]: Re-using an available connection from the pool (formerly list_dust-labs-485011, now list_dust-labs-485011_crypto_data)
+[0m13:54:29.679111 [debug] [ThreadPool]: Opening a new connection, currently in state closed
+[0m13:54:29.995310 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'runnable_timing', 'label': 'd2b605ee-fd04-48ed-bdbf-a8737cae761b', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x742364fddfa0>]}
+[0m13:54:29.998345 [debug] [MainThread]: Opening a new connection, currently in state init
+[0m13:54:30.013137 [debug] [Thread-1 (]: Began running node model.bitcoin_tracker.daily_price_summary
+[0m13:54:30.016051 [info ] [Thread-1 (]: 1 of 2 START sql view model crypto_data.daily_price_summary .................... [RUN]
+[0m13:54:30.018795 [debug] [Thread-1 (]: Re-using an available connection from the pool (formerly list_dust-labs-485011_crypto_data, now model.bitcoin_tracker.daily_price_summary)
+[0m13:54:30.021293 [debug] [Thread-2 (]: Began running node model.bitcoin_tracker.price_trends
+[0m13:54:30.023578 [debug] [Thread-1 (]: Began compiling node model.bitcoin_tracker.daily_price_summary
+[0m13:54:30.026601 [info ] [Thread-2 (]: 2 of 2 START sql view model crypto_data.price_trends ........................... [RUN]
+[0m13:54:30.035349 [debug] [Thread-2 (]: Acquiring new bigquery connection 'model.bitcoin_tracker.price_trends'
+[0m13:54:30.042124 [debug] [Thread-2 (]: Began compiling node model.bitcoin_tracker.price_trends
+[0m13:54:30.057146 [debug] [Thread-1 (]: Writing injected SQL for node "model.bitcoin_tracker.daily_price_summary"
+[0m13:54:30.057923 [debug] [Thread-2 (]: Writing injected SQL for node "model.bitcoin_tracker.price_trends"
+[0m13:54:30.058917 [debug] [Thread-1 (]: Began executing node model.bitcoin_tracker.daily_price_summary
+[0m13:54:30.085713 [debug] [Thread-2 (]: Began executing node model.bitcoin_tracker.price_trends
+[0m13:54:30.123339 [debug] [Thread-1 (]: Writing runtime sql for node "model.bitcoin_tracker.daily_price_summary"
+[0m13:54:30.122977 [debug] [Thread-2 (]: Writing runtime sql for node "model.bitcoin_tracker.price_trends"
+[0m13:54:30.125053 [debug] [Thread-1 (]: On model.bitcoin_tracker.daily_price_summary: /* {"app": "dbt", "dbt_version": "1.11.2", "profile_name": "bitcoin_tracker", "target_name": "dev", "node_id": "model.bitcoin_tracker.daily_price_summary"} */
+
+
+  create or replace view `dust-labs-485011`.`crypto_data`.`daily_price_summary`
+  OPTIONS()
+  as 
+
+-- Daily Bitcoin price summary
+-- Calculates daily OHLC (Open, High, Low, Close) and volatility metrics
+WITH daily_data AS (
+  SELECT 
+    DATE(price_timestamp) as date,
+    price_usd,
+    price_eur,
+    price_gbp,
+    market_cap_usd,
+    volume_24h_usd,
+    price_timestamp,
+    ROW_NUMBER() OVER (PARTITION BY DATE(price_timestamp) ORDER BY price_timestamp ASC) as first_row,
+    ROW_NUMBER() OVER (PARTITION BY DATE(price_timestamp) ORDER BY price_timestamp DESC) as last_row
+  FROM `dust-labs-485011`.`crypto_data`.`bitcoin_prices`
+)
+SELECT 
+  date,
+  
+  -- Price statistics
+  MIN(price_usd) as min_price_usd,
+  MAX(price_usd) as max_price_usd,
+  AVG(price_usd) as avg_price_usd,
+  MAX(CASE WHEN first_row = 1 THEN price_usd END) as open_price_usd,
+  MAX(CASE WHEN last_row = 1 THEN price_usd END) as close_price_usd,
+  
+  -- Volatility
+  STDDEV(price_usd) as daily_volatility,
+  MAX(price_usd) - MIN(price_usd) as price_range,
+  
+  -- Volume and market cap
+  AVG(market_cap_usd) as avg_market_cap_usd,
+  AVG(volume_24h_usd) as avg_volume_24h_usd,
+  
+  -- Additional metrics
+  AVG(price_eur) as avg_price_eur,
+  AVG(price_gbp) as avg_price_gbp,
+  COUNT(*) as data_points,
+  MIN(price_timestamp) as first_update,
+  MAX(price_timestamp) as last_update
+
+FROM daily_data
+GROUP BY date
+ORDER BY date DESC;
+
+
+[0m13:54:30.125857 [debug] [Thread-2 (]: On model.bitcoin_tracker.price_trends: /* {"app": "dbt", "dbt_version": "1.11.2", "profile_name": "bitcoin_tracker", "target_name": "dev", "node_id": "model.bitcoin_tracker.price_trends"} */
+
+
+  create or replace view `dust-labs-485011`.`crypto_data`.`price_trends`
+  OPTIONS()
+  as 
+
+-- Price trends with moving averages
+-- Calculates 7-day and 30-day moving averages for trend analysis
+SELECT 
+  price_timestamp,
+  price_usd,
+  price_eur,
+  price_gbp,
+  
+  -- 7-day moving average (168 hours)
+  AVG(price_usd) OVER (
+    ORDER BY price_timestamp
+    ROWS BETWEEN 167 PRECEDING AND CURRENT ROW
+  ) as ma_7day_usd,
+  
+  -- 30-day moving average (720 hours)
+  AVG(price_usd) OVER (
+    ORDER BY price_timestamp
+    ROWS BETWEEN 719 PRECEDING AND CURRENT ROW
+  ) as ma_30day_usd,
+  
+  -- Deviation from 7-day MA
+  price_usd - AVG(price_usd) OVER (
+    ORDER BY price_timestamp
+    ROWS BETWEEN 167 PRECEDING AND CURRENT ROW
+  ) as deviation_from_7day_ma,
+  
+  -- Percent deviation from 7-day MA
+  ROUND(
+    (price_usd - AVG(price_usd) OVER (
+      ORDER BY price_timestamp
+      ROWS BETWEEN 167 PRECEDING AND CURRENT ROW
+    )) / NULLIF(AVG(price_usd) OVER (
+      ORDER BY price_timestamp
+      ROWS BETWEEN 167 PRECEDING AND CURRENT ROW
+    ), 0) * 100,
+    2
+  ) as pct_deviation_from_7day_ma,
+  
+  -- Trend indicator (above/below MA)
+  CASE 
+    WHEN price_usd > AVG(price_usd) OVER (
+      ORDER BY price_timestamp
+      ROWS BETWEEN 167 PRECEDING AND CURRENT ROW
+    ) THEN 'ABOVE_MA'
+    ELSE 'BELOW_MA'
+  END as trend_vs_7day_ma,
+  
+  -- Market metrics
+  market_cap_usd,
+  volume_24h_usd,
+  price_change_24h_percent
+
+FROM `dust-labs-485011`.`crypto_data`.`bitcoin_prices`
+
+ORDER BY price_timestamp DESC;
+
+
+[0m13:54:30.126498 [debug] [Thread-1 (]: Opening a new connection, currently in state closed
+[0m13:54:30.127101 [debug] [Thread-2 (]: Opening a new connection, currently in state init
+[0m13:54:30.551875 [debug] [Thread-2 (]: BigQuery adapter: https://console.cloud.google.com/bigquery?project=dust-labs-485011&j=bq:us-central1:7bf0c20a-c99d-4d09-904d-3e13ac00617f&page=queryresults
+[0m13:54:30.562118 [debug] [Thread-1 (]: BigQuery adapter: https://console.cloud.google.com/bigquery?project=dust-labs-485011&j=bq:us-central1:bad19eb9-0324-4687-b022-023165accc46&page=queryresults
+[0m13:54:30.950157 [debug] [Thread-1 (]: SQL status: OK in 0.386 seconds
+[0m13:54:30.960901 [debug] [Thread-2 (]: SQL status: OK in 0.407 seconds
+[0m13:54:31.028191 [debug] [Thread-1 (]: Sending event: {'category': 'dbt', 'action': 'run_model', 'label': 'd2b605ee-fd04-48ed-bdbf-a8737cae761b', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7423640bbf50>]}
+[0m13:54:31.028795 [debug] [Thread-2 (]: Sending event: {'category': 'dbt', 'action': 'run_model', 'label': 'd2b605ee-fd04-48ed-bdbf-a8737cae761b', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7423640de7b0>]}
+[0m13:54:31.029632 [info ] [Thread-1 (]: 1 of 2 OK created sql view model crypto_data.daily_price_summary ............... [[32mCREATE VIEW (0 processed)[0m in 1.01s]
+[0m13:54:31.031672 [debug] [Thread-1 (]: Finished running node model.bitcoin_tracker.daily_price_summary
+[0m13:54:31.030842 [info ] [Thread-2 (]: 2 of 2 OK created sql view model crypto_data.price_trends ...................... [[32mCREATE VIEW (0 processed)[0m in 0.99s]
+[0m13:54:31.032970 [debug] [Thread-2 (]: Finished running node model.bitcoin_tracker.price_trends
+[0m13:54:31.034980 [debug] [MainThread]: Opening a new connection, currently in state closed
+[0m13:54:31.035886 [debug] [MainThread]: Connection 'master' was properly closed.
+[0m13:54:31.036346 [debug] [MainThread]: Connection 'model.bitcoin_tracker.daily_price_summary' was properly closed.
+[0m13:54:31.037186 [debug] [MainThread]: Connection 'model.bitcoin_tracker.price_trends' was properly closed.
+[0m13:54:31.037862 [info ] [MainThread]: 
+[0m13:54:31.038467 [info ] [MainThread]: Finished running 2 view models in 0 hours 0 minutes and 2.50 seconds (2.50s).
+[0m13:54:31.039676 [debug] [MainThread]: Command end result
+[0m13:54:31.067277 [debug] [MainThread]: Wrote artifact WritableManifest to ./target/manifest.json
+[0m13:54:31.069683 [debug] [MainThread]: Wrote artifact SemanticManifest to ./target/semantic_manifest.json
+[0m13:54:31.077230 [debug] [MainThread]: Wrote artifact RunExecutionResult to ./target/run_results.json
+[0m13:54:31.077748 [info ] [MainThread]: 
+[0m13:54:31.078356 [info ] [MainThread]: [32mCompleted successfully[0m
+[0m13:54:31.078948 [info ] [MainThread]: 
+[0m13:54:31.079583 [info ] [MainThread]: Done. PASS=2 WARN=0 ERROR=0 SKIP=0 NO-OP=0 TOTAL=2
+[0m13:54:31.080453 [debug] [MainThread]: Resource report: {"command_name": "run", "command_success": true, "command_wall_clock_time": 15.1834345, "process_in_blocks": "8", "process_kernel_time": 2.631675, "process_mem_max_rss": "393052", "process_out_blocks": "3472", "process_user_time": 12.610068}
+[0m13:54:31.081136 [debug] [MainThread]: Command `dbt run` succeeded at 13:54:31.080985 after 15.18 seconds
+[0m13:54:31.081665 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'invocation', 'label': 'end', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7423879017c0>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x742364ee7d70>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x74238839d8b0>]}
+[0m13:54:31.082220 [debug] [MainThread]: Flushing usage events
+[0m13:54:31.528010 [debug] [MainThread]: An error was encountered while trying to flush usage events

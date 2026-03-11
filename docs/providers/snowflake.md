@@ -1,0 +1,468 @@
+# Snowflake Provider
+
+Deploy data products to Snowflake Data Cloud — databases, schemas, tables, RBAC grants — using the same contract and CLI commands as every other provider.
+
+**Status:** ✅ Production  
+**Version:** 0.7.1  
+**Tested Services:** Databases, Schemas, Tables, Warehouses, RBAC Grants
+
+---
+
+## Overview
+
+The Snowflake provider turns a FLUID contract into real Snowflake infrastructure:
+
+- ✅ **Plan & Apply** — Databases, schemas, tables, warehouses
+- ✅ **RBAC Compilation** — `fluid policy-compile` generates Snowflake `GRANT` statements from `accessPolicy`
+- ✅ **Sovereignty Validation** — Region constraints enforced before deployment
+- ✅ **Airflow DAG Generation** — `fluid generate-airflow` produces Snowflake-operator DAGs
+- ✅ **Governance** — Classification, column masking, row-level security, audit labels
+- ✅ **Universal Pipeline** — Same Jenkinsfile as GCP and AWS — zero provider logic
+
+## Working Example: Bitcoin Price Tracker
+
+This is a production-tested example that runs end-to-end in Jenkins CI.
+
+### Contract
+
+```yaml
+fluidVersion: "0.7.1"
+kind: DataProduct
+id: crypto.bitcoin_prices_snowflake_governed
+name: Bitcoin Price Index (FLUID 0.7.1 + Snowflake + Governance)
+description: >
+  Real-time Bitcoin price data with comprehensive governance policies
+  on Snowflake Data Cloud
+domain: finance
+
+tags:
+  - cryptocurrency
+  - real-time
+  - governed
+  - gdpr-compliant
+  - snowflake
+
+labels:
+  cost_center: "CC-1234"
+  business_criticality: "high"
+  compliance_gdpr: "true"
+  compliance_soc2: "true"
+  platform: "snowflake"
+
+metadata:
+  layer: Gold
+  owner:
+    team: data-engineering
+    email: data-engineering@company.com
+
+# ── Data Sovereignty ──────────────────────────────────────────
+sovereignty:
+  jurisdiction: "EU"
+  dataResidency: true
+  allowedRegions:
+    - eu-west-1          # Snowflake AWS Europe (Ireland)
+    - eu-central-1       # Snowflake AWS Europe (Frankfurt)
+    - europe-west4       # Snowflake GCP Europe (Netherlands)
+  deniedRegions:
+    - us-east-1
+    - us-west-2
+    - us-central1
+  crossBorderTransfer: false
+  transferMechanisms:
+    - SCCs
+  regulatoryFramework:
+    - GDPR
+    - SOC2
+  enforcementMode: advisory
+  validationRequired: true
+
+# ── Access Policy: Snowflake RBAC ─────────────────────────────
+accessPolicy:
+  grants:
+    - principal: "role:DATA_ANALYST"
+      permissions: [read, select, query]
+
+    - principal: "role:FINANCE_ANALYST"
+      permissions: [read, select]
+
+    - principal: "role:TRADER"
+      permissions: [read, select, query]
+
+    - principal: "role:DATA_ENGINEER"
+      permissions: [write, insert, update, delete, create]
+
+    - principal: "user:looker_service@company.com"
+      permissions: [read, select]
+
+# ── Expose: Snowflake Table ───────────────────────────────────
+exposes:
+  - exposeId: bitcoin_prices_table
+    title: "Bitcoin Real-time Price Feed"
+    version: "1.0.0"
+    kind: table
+
+    binding:
+      platform: snowflake
+      format: snowflake_table
+      location:
+        account: "{{ env.SNOWFLAKE_ACCOUNT }}"
+        database: "CRYPTO_DATA"
+        schema: "MARKET_DATA"
+        table: "BITCOIN_PRICES"
+      properties:
+        cluster_by: ["price_timestamp"]
+        table_type: "STANDARD"
+        data_retention_time_in_days: 7
+        change_tracking: true
+
+    # Governance policies
+    policy:
+      classification: Internal
+      authn: snowflake_rbac
+      authz:
+        readers:
+          - role:DATA_ANALYST
+          - role:FINANCE_ANALYST
+          - role:TRADER
+        writers:
+          - role:DATA_ENGINEER
+        columnRestrictions:
+          - principal: "role:JUNIOR_ANALYST"
+            columns: [market_cap_usd, volume_24h_usd]
+            access: deny
+      privacy:
+        masking:
+          - column: "ingestion_timestamp"
+            strategy: "hash"
+            params:
+              algorithm: "SHA256"
+        rowLevelPolicy:
+          expression: >
+            price_timestamp >= DATEADD(day, -30, CURRENT_TIMESTAMP())
+
+    # Schema contract
+    contract:
+      schema:
+        - name: price_timestamp
+          type: TIMESTAMP_NTZ
+          required: true
+          description: UTC timestamp when price was recorded
+          sensitivity: cleartext
+          semanticType: "timestamp"
+
+        - name: price_usd
+          type: NUMBER(18,2)
+          required: true
+          description: Bitcoin price in USD
+          sensitivity: cleartext
+          semanticType: "currency"
+
+        - name: price_eur
+          type: NUMBER(18,2)
+          required: false
+          description: Bitcoin price in EUR
+
+        - name: price_gbp
+          type: NUMBER(18,2)
+          required: false
+          description: Bitcoin price in GBP
+
+        - name: market_cap_usd
+          type: NUMBER(20,2)
+          required: false
+          description: Total market capitalization in USD
+          sensitivity: internal
+
+        - name: volume_24h_usd
+          type: NUMBER(20,2)
+          required: false
+          description: 24-hour trading volume in USD
+          sensitivity: internal
+
+        - name: price_change_24h_pct
+          type: NUMBER(10,4)
+          required: false
+          description: 24-hour price change percentage
+
+        - name: last_updated
+          type: TIMESTAMP_NTZ
+          required: false
+          description: Timestamp from CoinGecko API
+
+        - name: ingestion_timestamp
+          type: TIMESTAMP_NTZ
+          required: true
+          description: When data was ingested into our system
+
+# ── Build: API Ingestion ──────────────────────────────────────
+builds:
+  - id: bitcoin_price_ingestion
+    description: Fetch Bitcoin prices from CoinGecko API
+    pattern: hybrid-reference
+    engine: python
+    repository: ./runtime
+    properties:
+      model: ingest
+    execution:
+      trigger:
+        type: manual
+        iterations: 1
+        delaySeconds: 3
+      runtime:
+        platform: snowflake
+        resources:
+          warehouse: "COMPUTE_WH"
+          warehouse_size: "X-SMALL"
+      retries:
+        count: 3
+        backoff: exponential
+    outputs:
+      - bitcoin_prices_table
+```
+
+### Key Schema Patterns
+
+The 0.7.1 binding schema uses three fields to identify platform resources:
+
+| Field | Purpose | Snowflake Values |
+|-------|---------|-----------------|
+| `binding.platform` | Cloud provider | `snowflake` |
+| `binding.format` | Storage format | `snowflake_table` |
+| `binding.location` | Resource coordinates | `account`, `database`, `schema`, `table` |
+
+This is identical to GCP (`platform: gcp`, `format: bigquery_table`) and AWS (`platform: aws`, `format: parquet`).
+
+## CLI Commands
+
+Every command is **identical** across providers. No `--provider` flag needed — the CLI reads the provider from the contract's `binding.platform` field.
+
+```bash
+# Validate contract against 0.7.1 JSON schema
+fluid validate contract.fluid.yaml --verbose
+
+# Generate execution plan
+fluid plan contract.fluid.yaml --env dev --out plans/plan-dev.json
+
+# Deploy database, schema, table
+fluid apply contract.fluid.yaml --env dev --yes
+
+# Compile RBAC policies from accessPolicy grants
+fluid policy-compile contract.fluid.yaml --env dev --out runtime/policy/bindings.json
+
+# Apply RBAC bindings (dry-run or enforce)
+fluid policy-apply runtime/policy/bindings.json --mode check
+fluid policy-apply runtime/policy/bindings.json --mode enforce
+
+# Run the ingest script
+fluid execute contract.fluid.yaml
+
+# Generate Airflow DAG
+fluid generate-airflow contract.fluid.yaml --out airflow-dags/bitcoin_snowflake.py
+
+# Export standards
+fluid odps export contract.fluid.yaml --out standards/product.odps.json
+fluid odcs export contract.fluid.yaml --out standards/product.odcs.yaml
+```
+
+## RBAC Policy Compilation
+
+`fluid policy-compile` reads `accessPolicy.grants` and generates Snowflake `GRANT` statements:
+
+```json
+{
+  "provider": "snowflake",
+  "bindings": [
+    {
+      "role": "role:DATA_ANALYST",
+      "resource": "bitcoin_prices_table",
+      "permissions": [
+        "SELECT on CRYPTO_DATA.MARKET_DATA.BITCOIN_PRICES",
+        "USAGE on DATABASE CRYPTO_DATA",
+        "USAGE on SCHEMA CRYPTO_DATA.MARKET_DATA"
+      ]
+    },
+    {
+      "role": "role:DATA_ENGINEER",
+      "resource": "bitcoin_prices_table",
+      "permissions": [
+        "INSERT on CRYPTO_DATA.MARKET_DATA.BITCOIN_PRICES",
+        "UPDATE on CRYPTO_DATA.MARKET_DATA.BITCOIN_PRICES",
+        "DELETE on CRYPTO_DATA.MARKET_DATA.BITCOIN_PRICES"
+      ]
+    }
+  ]
+}
+```
+
+The permission mapping:
+
+| Contract Permission | Snowflake GRANT |
+|--------------------|-----------------|
+| `read`, `select`, `query` | `SELECT` on table, `USAGE` on database + schema |
+| `write`, `insert` | `INSERT` on table |
+| `update` | `UPDATE` on table |
+| `delete` | `DELETE` on table |
+
+## Credentials Setup
+
+### Jenkins CI (Recommended)
+
+Create a Jenkins **Secret File** credential containing your Snowflake env vars:
+
+```bash
+# File contents (plain key=value, no 'export' prefix)
+SNOWFLAKE_ACCOUNT=xy12345.eu-central-1
+SNOWFLAKE_USER=FLUID_SERVICE
+SNOWFLAKE_PASSWORD=xxxxxxxxxx
+SNOWFLAKE_WAREHOUSE=COMPUTE_WH
+SNOWFLAKE_ROLE=SYSADMIN
+SNOWFLAKE_DATABASE=CRYPTO_DATA
+SNOWFLAKE_SCHEMA=MARKET_DATA
+```
+
+The [Universal Pipeline](/walkthrough/universal-pipeline) auto-detects this format and sources it into every stage. No provider-specific credential logic.
+
+### Local Development
+
+```bash
+# .env file (same format as Jenkins)
+cat > .env << 'EOF'
+SNOWFLAKE_ACCOUNT=xy12345.eu-central-1
+SNOWFLAKE_USER=FLUID_SERVICE
+SNOWFLAKE_PASSWORD=xxxxxxxxxx
+SNOWFLAKE_WAREHOUSE=COMPUTE_WH
+SNOWFLAKE_ROLE=SYSADMIN
+SNOWFLAKE_DATABASE=CRYPTO_DATA
+SNOWFLAKE_SCHEMA=MARKET_DATA
+EOF
+
+# Source and run
+set -a; . .env; set +a
+fluid apply contract.fluid.yaml --env dev --yes
+```
+
+## Infrastructure Created
+
+When you run `fluid apply` on a Snowflake contract, the provider creates:
+
+| Resource | Details |
+|----------|---------|
+| **Database** | `CRYPTO_DATA` |
+| **Schema** | `CRYPTO_DATA.MARKET_DATA` |
+| **Table** | `CRYPTO_DATA.MARKET_DATA.BITCOIN_PRICES` — clustered by `price_timestamp` |
+| **Warehouse** | `COMPUTE_WH` (X-SMALL) — used for queries and ingestion |
+
+### What the Pipeline Produces
+
+After a successful run, the pipeline inserts real data:
+
+```sql
+SELECT price_timestamp, price_usd, price_eur, market_cap_usd
+FROM CRYPTO_DATA.MARKET_DATA.BITCOIN_PRICES
+ORDER BY price_timestamp DESC
+LIMIT 5;
+```
+
+```
+┌──────────────────────┬───────────┬───────────┬────────────────┐
+│ PRICE_TIMESTAMP      │ PRICE_USD │ PRICE_EUR │ MARKET_CAP_USD │
+├──────────────────────┼───────────┼───────────┼────────────────┤
+│ 2025-01-30 14:30:52  │ 104809.00 │  96543.00 │ 2075000000.00  │
+└──────────────────────┴───────────┴───────────┴────────────────┘
+```
+
+## Governance Features
+
+### Data Sovereignty
+
+The `sovereignty` block enforces region restrictions **before** any infrastructure is deployed:
+
+```yaml
+sovereignty:
+  jurisdiction: "EU"
+  allowedRegions: [eu-west-1, eu-central-1, europe-west4]
+  deniedRegions: [us-east-1, us-west-2, us-central1]
+  crossBorderTransfer: false
+  regulatoryFramework: [GDPR, SOC2]
+  enforcementMode: advisory  # or strict (blocks deployment)
+```
+
+### Column-Level Security
+
+Restrict specific columns from specific roles:
+
+```yaml
+authz:
+  columnRestrictions:
+    - principal: "role:JUNIOR_ANALYST"
+      columns: [market_cap_usd, volume_24h_usd]
+      access: deny
+```
+
+### Privacy Masking
+
+Hash sensitive fields and enforce retention policies:
+
+```yaml
+privacy:
+  masking:
+    - column: "ingestion_timestamp"
+      strategy: "hash"
+      params:
+        algorithm: "SHA256"
+  rowLevelPolicy:
+    expression: "price_timestamp >= DATEADD(day, -30, CURRENT_TIMESTAMP())"
+```
+
+### Snowflake-Native Security
+
+The contract's governance maps naturally to Snowflake's built-in features:
+
+| Contract Feature | Snowflake Implementation |
+|-----------------|-------------------------|
+| `accessPolicy.grants` | `GRANT SELECT/INSERT/UPDATE ON TABLE ... TO ROLE ...` |
+| `columnRestrictions` | Dynamic Data Masking policies |
+| `rowLevelPolicy` | Row Access Policies |
+| `sovereignty.allowedRegions` | Account region validation |
+| `classification` | Object tagging via `TAG` |
+
+## CI/CD Pipeline
+
+The Snowflake example uses the exact same Jenkinsfile as GCP and AWS — the [Universal Pipeline](/walkthrough/universal-pipeline). Key stages:
+
+| Stage | Command | What Happens |
+|-------|---------|-------------|
+| Validate | `fluid validate` | Contract checked against 0.7.1 schema |
+| Export | `fluid odps export` / `fluid odcs export` | Standards files generated |
+| Compile RBAC | `fluid policy-compile` | `accessPolicy` → Snowflake GRANT bindings |
+| Plan | `fluid plan` | Execution plan generated |
+| Apply | `fluid apply` | Database + schema + table created |
+| Apply RBAC | `fluid policy-apply` | RBAC grants enforced |
+| Execute | `fluid execute` | `ingest.py` runs, inserts rows to Snowflake |
+| Airflow DAG | `fluid generate-airflow` | Production DAG generated |
+
+## Snowflake Table Properties
+
+The `binding.properties` block supports Snowflake-specific table features:
+
+```yaml
+binding:
+  platform: snowflake
+  format: snowflake_table
+  location:
+    database: "ANALYTICS"
+    schema: "MARTS"
+    table: "CUSTOMER_METRICS"
+  properties:
+    cluster_by: ["customer_id", "order_date"]
+    table_type: "STANDARD"              # STANDARD or TRANSIENT
+    data_retention_time_in_days: 7      # Time Travel retention
+    change_tracking: true               # Enable CDC streams
+```
+
+## See Also
+
+- [Universal Pipeline](/walkthrough/universal-pipeline) — Same Jenkinsfile for every provider
+- [AWS Provider](./aws) — Amazon Web Services integration
+- [GCP Provider](./gcp) — Google Cloud Platform integration
+- [CLI Reference](/cli/) — Full command documentation
