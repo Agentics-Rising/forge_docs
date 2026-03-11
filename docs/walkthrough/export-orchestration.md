@@ -692,10 +692,10 @@ pip install apache-airflow-providers-snowflake
 
 ## Next Steps
 
-- [Airflow DAG Deployment Guide](/walkthrough/airflow-declarative.html)
-- [GCP Integration](/walkthrough/gcp.html)
-- [CI/CD Setup](/walkthrough/jenkins-cicd.html)
-- [Provider Roadmap](/providers/roadmap.html)
+- [Airflow DAG Deployment Guide](/walkthrough/airflow-declarative)
+- [GCP Integration](/walkthrough/gcp)
+- [CI/CD Setup](/walkthrough/jenkins-cicd)
+- [Provider Roadmap](/providers/roadmap)
 
 ---
 

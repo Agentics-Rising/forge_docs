@@ -200,14 +200,14 @@ Key test categories:
 
 ### New Documentation
 
-- **[Export Orchestration Guide](/walkthrough/export-orchestration.html)** - Comprehensive tutorial with examples
+- **[Export Orchestration Guide](/walkthrough/export-orchestration)** - Comprehensive tutorial with examples
 
 ### Updated Documentation
 
-- **[README.md](/README.md)** - Updated feature list
+- **[README.md](/)** - Updated feature list
 - **[CLI Reference](/cli/)** - Added `fluid export` command
-- **[Provider Roadmap](/providers/roadmap.html)** - Updated AWS and Snowflake status
-- **[GCP Provider](/providers/gcp.html)** - Added export capabilities
+- **[Provider Roadmap](/providers/roadmap)** - Updated AWS and Snowflake status
+- **[GCP Provider](/providers/gcp)** - Added export capabilities
 - **[Getting Started](/getting-started/)** - Added export examples
 
 ---
@@ -360,9 +360,9 @@ This release was made possible by:
 
 ## 🔗 Links
 
-- [Export Orchestration Guide](/walkthrough/export-orchestration.html)
+- [Export Orchestration Guide](/walkthrough/export-orchestration)
 - [CLI Reference](/cli/)
-- [Provider Roadmap](/providers/roadmap.html)
+- [Provider Roadmap](/providers/roadmap)
 - [GitHub Repository](https://github.com/agentics-rising/fluid-forge-cli)
 
 ---
