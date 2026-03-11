@@ -76,7 +76,7 @@ You declare the desired state. Fluid Forge plans the execution, handles errors, 
 ### 2. Developer Experience
 
 ```bash
-pip install fluid-build          # Install
+pip install fluid-forge          # Install
 fluid init my-project --quickstart  # Scaffold
 fluid apply contract.fluid.yaml --yes  # Deploy
 ```

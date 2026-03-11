@@ -16,7 +16,7 @@ When you're ready for production, switch to [GCP](/providers/gcp), [AWS](/provid
 ## Install
 
 ```bash
-pip install fluid-build
+pip install fluid-forge
 ```
 
 Verify the installation:

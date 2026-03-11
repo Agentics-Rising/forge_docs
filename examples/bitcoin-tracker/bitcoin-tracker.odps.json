@@ -1,6 +1,6 @@
 {
   "opds_version": "1.0",
-  "generator": "fluid-build-opds-provider",
+  "generator": "fluid-forge-opds-provider",
   "generated_at": "2026-01-21T09:52:35Z",
   "target_platform": "generic",
   "count": 1,

@@ -752,7 +752,7 @@ fluid odcs validate bitcoin-tracker.odcs.yaml
 ```json
 {
   "opds_version": "1.0",
-  "generator": "fluid-build-opds-provider",
+  "generator": "fluid-forge-opds-provider",
   "target_platform": "generic",
   "artifacts": {
     "schema": "https://github.com/Open-Data-Product-Initiative/v4.1",

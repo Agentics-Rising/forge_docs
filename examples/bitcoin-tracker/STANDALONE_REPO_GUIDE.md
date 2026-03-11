@@ -509,7 +509,7 @@ git commit -m "feat(cli): Improve validation error messages"
 
 cd ~/bitcoin-price-tracker
 # Update requirements.txt to use new version
-git commit -m "chore: Update fluid-build to v0.8.0"
+git commit -m "chore: Update fluid-forge to v0.8.0"
 ```
 
 ## 🎯 Next Steps

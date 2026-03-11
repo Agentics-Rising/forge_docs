@@ -22,7 +22,7 @@ The Local provider enables rapid development and testing without cloud costs. Pe
 ### Installation
 
 ```bash
-pip install fluid-build duckdb
+pip install fluid-forge duckdb
 ```
 
 ### Minimal Contract

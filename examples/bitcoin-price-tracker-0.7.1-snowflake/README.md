@@ -27,7 +27,7 @@ This example demonstrates the **declarative data product** pattern using FLUID:
 
 ```bash
 # FLUID CLI
-pip install fluid-build
+pip install fluid-forge
 
 # Snowflake credentials
 export SNOWFLAKE_ACCOUNT=your_account
@@ -376,4 +376,4 @@ A: Yes. Jenkinsfile shows full CI/CD pipeline with validation, deployment, execu
 
 ---
 
-**Built with FLUID 0.7.1** | [Documentation](https://github.com/your-org/fluid-build)
+**Built with FLUID 0.7.1** | [Documentation](https://github.com/your-org/fluid-forge)

@@ -37,7 +37,7 @@ All v0.5.7 governance features are **preserved and enhanced**:
 docker pull localhost:5000/fluid-forge-cli:beta
 
 # OR install locally
-pip install fluid-build==0.7.1
+pip install fluid-forge==0.7.1
 
 # GCP authentication
 export GOOGLE_APPLICATION_CREDENTIALS=/path/to/service-account.json

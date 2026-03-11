@@ -28,7 +28,7 @@ Build a **Netflix customer viewing analytics pipeline** entirely on your laptop 
 ### Install Fluid Forge
 
 ```bash
-pip install fluid-build
+pip install fluid-forge
 ```
 
 ### Verify Installation

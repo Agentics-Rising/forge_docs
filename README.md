@@ -9,7 +9,7 @@
 </p>
 
 <p align="center">
-  <a href="https://pypi.org/project/fluid-build/"><img src="https://img.shields.io/pypi/v/fluid-build?color=blue&label=PyPI" alt="PyPI"></a>
+  <a href="https://pypi.org/project/fluid-forge/"><img src="https://img.shields.io/pypi/v/fluid-forge?color=blue&label=PyPI" alt="PyPI"></a>
   <a href="https://www.python.org/"><img src="https://img.shields.io/badge/python-3.9%2B-blue" alt="Python 3.9+"></a>
   <a href="LICENSE"><img src="https://img.shields.io/badge/license-Apache%202.0-green" alt="License"></a>
   <a href="https://github.com/agentics-rising/forge-cli-docs/actions/workflows/deploy-docs.yml"><img src="https://img.shields.io/github/actions/workflow/status/agentics-rising/forge-cli-docs/deploy-docs.yml?label=docs" alt="Docs Build"></a>
@@ -31,7 +31,7 @@ This repository contains the **official documentation** for [Fluid Forge](https:
 ## Quick Start
 
 ```bash
-pip install fluid-build
+pip install fluid-forge
 fluid init my-project --quickstart
 fluid apply contract.fluid.yaml --yes
 # Done. Your data product is live.

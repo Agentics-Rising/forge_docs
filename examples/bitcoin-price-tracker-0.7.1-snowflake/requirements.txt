@@ -14,4 +14,4 @@ pyyaml>=6.0
 pandas>=1.5.0
 
 # Optional: FLUID CLI for declarative deployment
-# fluid-build>=0.7.1
+# fluid-forge>=0.7.1
