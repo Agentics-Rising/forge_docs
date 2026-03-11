@@ -9,7 +9,20 @@ export default defineUserConfig({
   
   base: '/forge-cli-docs/',
   
-  bundler: viteBundler(),
+  bundler: viteBundler({
+    viteOptions: {
+      build: {
+        rollupOptions: {
+          output: {
+            manualChunks: undefined
+          }
+        }
+      }
+    }
+  }),
+  
+  shouldPrefetch: false,
+  shouldPreload: false,
   
   head: [
     ['link', { rel: 'icon', href: '/forge-cli-docs/logo.png' }],
