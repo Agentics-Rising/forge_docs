@@ -1,0 +1,116 @@
+# init Command
+
+Create a new FLUID project with contracts, sample data, and a ready-to-run pipeline.
+
+## Syntax
+
+```bash
+fluid init [name] [options]
+```
+
+## Options
+
+### Project Mode (mutually exclusive)
+
+| Option | Description |
+|--------|-------------|
+| `--quickstart` | Create a working example with sample data **(recommended)** |
+| `--scan` | Import an existing dbt or Terraform project |
+| `--wizard` | Interactive guided setup |
+| `--blank` | Empty project skeleton |
+| `--template <name>` | Start from a named template (e.g. `customer-360`) |
+
+### Additional Options
+
+| Option | Description | Default |
+|--------|-------------|---------|
+| `--provider <name>` | Target provider: `local`, `gcp`, `aws`, `snowflake`, `azure` | `local` |
+| `--use-case <type>` | Project type: `data-product`, `ai-agent`, `analytics`, `api` | — |
+| `--no-run` | Don't auto-execute the pipeline after creation | `false` |
+| `--no-dag` | Don't auto-generate an Airflow DAG | `false` |
+| `--dry-run` | Preview what would be created without writing files | `false` |
+| `--yes`, `-y` | Skip confirmation prompts | `false` |
+
+## What It Creates
+
+A new project directory containing:
+
+```
+my-project/
+├── contract.fluid.yaml   # Data product contract
+├── seeds/                 # Sample CSV data (quickstart only)
+│   └── *.csv
+├── models/                # SQL transforms
+│   └── *.sql
+└── runtime/               # Execution artifacts
+```
+
+## Examples
+
+### Quickstart (Recommended)
+
+```bash
+fluid init bitcoin-tracker --quickstart
+```
+
+Creates a fully working project with sample data you can run immediately:
+
+```bash
+cd bitcoin-tracker
+fluid validate contract.fluid.yaml
+fluid apply contract.fluid.yaml --yes
+```
+
+### Scan Existing dbt Project
+
+```bash
+cd existing-dbt-project
+fluid init --scan
+```
+
+Auto-detects dbt models and converts them into a FLUID contract.
+
+### GCP-Targeted Project
+
+```bash
+fluid init analytics --provider gcp --quickstart
+```
+
+Generates a contract configured for BigQuery deployment.
+
+### Blank Skeleton
+
+```bash
+fluid init my-project --blank
+```
+
+Creates a minimal project with an empty contract template.
+
+### Preview Mode
+
+```bash
+fluid init my-project --quickstart --dry-run
+```
+
+Shows what files and directories would be created without writing anything.
+
+## After Initialization
+
+Once your project is created, follow the standard workflow:
+
+```bash
+# 1. Move into the project directory
+cd my-project
+
+# 2. Validate the contract
+fluid validate contract.fluid.yaml
+
+# 3. Deploy locally (or to cloud)
+fluid apply contract.fluid.yaml --yes
+```
+
+## See Also
+
+- [Getting Started Guide](/getting-started/) — end-to-end first project walkthrough
+- [validate command](./validate.md) — validate your contract
+- [apply command](./apply.md) — deploy your project
